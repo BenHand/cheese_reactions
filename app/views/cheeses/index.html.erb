@@ -1,37 +1,37 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Cheeses</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Kind</th>
-      <th>Rating</th>
-      <th>Description</th>
-      <th>Pic</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @cheeses.each do |cheese| %>
+<h2>Cheeses</h2>
+<section class="panel panel-default">
+  <table class="table">
+    <thead>
       <tr>
-        <td><%= cheese.name %></td>
-        <td><%= cheese.kind %></td>
-        <td><%= cheese.rating %></td>
-        <td><%= cheese.description %></td>
-        <td><%= cheese.pic %></td>
-        <td><%= cheese.user %></td>
-        <td><%= link_to 'Show', cheese %></td>
-        <td><%= link_to 'Edit', edit_cheese_path(cheese) %></td>
-        <td><%= link_to 'Destroy', cheese, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Name</th>
+        <th>Kind</th>
+        <th>Rating</th>
+        <th>Description</th>
+        <th>Pic</th>
+        <th>User</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
+    <tbody>
+      <% @cheeses.each do |cheese| %>
+        <tr>
+          <td><%= cheese.name %></td>
+          <td><%= cheese.kind %></td>
+          <td><%= cheese.rating %></td>
+          <td><%= cheese.description %></td>
+          <td><%= cheese.pic %></td>
+          <td><%= cheese.user %></td>
+          <td><%= link_to 'Show', cheese %></td>
+          <td><%= link_to 'Edit', edit_cheese_path(cheese) %></td>
+          <td><%= link_to 'Destroy', cheese, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</section>
 <br>
 
 <%= link_to 'New Cheese', new_cheese_path %>
