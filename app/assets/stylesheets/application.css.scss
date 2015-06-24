@@ -5,3 +5,20 @@
   text-align: center;
 }
 
+.session-box{
+  position: absolute;
+  top: 7px;
+  right: 10px;
+  width: 40%;
+};
+header{
+  width: 100%;
+  background-image: linear-gradient(to right, #FFBD65, #CDAD7A);
+  a {
+    color: white;
+    font-weight: bold;
+    &:hover{
+      color: red;
+    };
+  };
+};

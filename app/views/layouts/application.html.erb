@@ -6,9 +6,26 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<nav>
-  <%= react_component('Navigation') %>
-</nav>
+<header>
+  <div class="container">
+    <nav class='row'>
+      <%= react_component('Navigation') %>
+    </nav>
+    <div class="session-box">
+      <% if session[:user_id] %>
+        <%= link_to 'Logout', logout_path %>
+      <% else %>
+        <%= form_tag("/sessions/create", method: "post") do %>
+          <%= label_tag(:name) %>
+          <%= text_field_tag(:name) %>
+          <%= label_tag(:password) %>
+          <%= password_field_tag(:password) %>
+          <%= submit_tag("Login") %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</header>
 <body>
 
 <%= yield %>

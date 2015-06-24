@@ -13,15 +13,16 @@ class CheesesController < ApplicationController
   end
 
   def edit
+    current_user
   end
 
   def create
-    authenticate_user!
+    current_user
     @cheese = Cheese.new(cheese_params)
 
     respond_to do |format|
       if @cheese.save
-        format.html { redirect_to @cheese, notice: 'Cheese was successfully created.' }
+        format.html { redirect_to cheeses_path, notice: 'Cheese was successfully created.' }
         format.json { render :show, status: :created, location: @cheese }
       else
         format.html { render :new }
@@ -31,7 +32,6 @@ class CheesesController < ApplicationController
   end
 
   def update
-    authenticate_user!
     respond_to do |format|
       if @cheese.update(cheese_params)
         format.html { redirect_to @cheese, notice: 'Cheese was successfully updated.' }
@@ -44,7 +44,6 @@ class CheesesController < ApplicationController
   end
 
   def destroy
-    authenticate_user!
     @cheese.destroy
     respond_to do |format|
       format.html { redirect_to cheeses_url, notice: 'Cheese was successfully destroyed.' }

@@ -7,7 +7,7 @@
       <tr>
         <th>Name</th>
         <th>Kind</th>
-        <th>Rating</th>
+        <th>Rating (1-5 Cheese Wheels)</th>
         <th>Description</th>
         <th>Pic</th>
         <th>User</th>
@@ -18,16 +18,16 @@
     <tbody>
       <% @cheeses.each do |cheese| %>
         <tr>
-          <td><%= cheese.name %></td>
+          <td><%= link_to cheese.name, cheese_path(cheese.id) %></td>
           <td><%= cheese.kind %></td>
-          <td><%= cheese.rating %></td>
+          <td><% (cheese.rating).times do %>
+            <%= image_tag("http://hydra-media.cursecdn.com/skyrim.gamepedia.com/thumb/a/a1/GoatCheeseWheel.png/40px-GoatCheeseWheel.png?version=ff504420ac516527e586c333a7c270f8") %>
+            <% end %>
+          </td>
           <td><%= cheese.description %></td>
           <td><%= image_tag(cheese.pic, size: '80x50')%></td>
           <td><%= cheese.user %></td>
-          <td><%= link_to 'Show', cheese %></td>
           <td><%= link_to 'Edit', edit_cheese_path(cheese) %></td>
-          <td><%= link_to 'Destroy', cheese, method: :delete,
-                        data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
     </tbody>
